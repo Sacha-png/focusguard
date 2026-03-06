@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- iOS PWA & compatibility -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="FocusGuard" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- SEO -->
+  <meta name="description" content="FocusGuard analyse ton calendrier et négocie ton quota de divertissement avec l'IA. Vaincre la procrastination n'a jamais été aussi simple." />
+  <meta property="og:title" content="FocusGuard — Vaincre la procrastination" />
+  <meta property="og:description" content="Négociation IA, challenge pompes, suivi Firefox. Reprends le contrôle de ton temps." />
+  <meta property="og:type" content="website" />
+
+  <title>FocusGuard — Vaincre la procrastination</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAV ═══════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">FocusGuard</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#how">Comment ça marche</a></li>
+        <li><a href="#download">Télécharger</a></li>
+      </ul>
+      <a href="#download" class="nav-cta">Télécharger</a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#features" onclick="closeMenu()">Fonctionnalités</a>
+      <a href="#how" onclick="closeMenu()">Comment ça marche</a>
+      <a href="#download" onclick="closeMenu()">Télécharger</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="grid-lines"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Gratuit &amp; Open Source · Windows
+      </div>
+      <h1 class="hero-title">
+        Arrête de<br />
+        <span class="gradient-text">procrastiner.</span><br />
+        Pour de vrai.
+      </h1>
+      <p class="hero-sub">
+        FocusGuard analyse ton calendrier, négocie ton quota de divertissement avec l'IA
+        et te challenge physiquement avant chaque session — pour que chaque minute de
+        YouTube ou gaming soit <em>méritée</em>.
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Télécharger gratuitement
+        </a>
+        <a href="#how" class="btn-ghost">Voir comment ça marche →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>IA</strong><span>Négociation GPT-4o</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>10+</strong><span>Sites bloqués</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>100%</strong><span>Local & privé</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="app-mockup">
+        <div class="mockup-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="mockup-title-bar">FocusGuard</span>
+        </div>
+        <div class="mockup-tabs">
+          <span class="mtab active">Earn time</span>
+          <span class="mtab">Stats</span>
+          <span class="mtab">Settings</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-group">
+            <span class="mockup-group-title">Site</span>
+            <div class="mockup-combo">YouTube</div>
+          </div>
+          <div class="mockup-banner green">Agreed: 105 min total entertainment today.</div>
+          <div class="mockup-group">
+            <span class="mockup-group-title">Duration set by AI</span>
+            <div class="mockup-dur-row">
+              <span class="mockup-dur-label">Time granted:</span>
+              <span class="mockup-dur-val">35 min</span>
+            </div>
+            <span class="mockup-hint">Negotiate with the AI to change this quota.</span>
+          </div>
+          <div class="mockup-btns">
+            <button class="mockup-btn-primary">Do push-ups for this time</button>
+            <button class="mockup-btn-ghost">Solve a puzzle</button>
+          </div>
+          <div class="mockup-group">
+            <span class="mockup-group-title">Active sessions</span>
+            <div class="mockup-session">
+              <div>
+                <div class="session-domain">youtube.com</div>
+                <div class="session-timer">32:14 remaining</div>
+              </div>
+              <div class="session-bar-wrap">
+                <div class="session-bar" style="width:72%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FEATURES ═══════════════════════ -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Fonctionnalités</span>
+        <h2>Tout ce qu'il faut pour <span class="gradient-text">rester focus</span></h2>
+        <p>Une suite complète d'outils qui transforment tes habitudes numériques en discipline active.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card card-lg">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#4a9eff22,#4a9eff44)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 1 7 7"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3>Négociation IA</h3>
+          <p>GPT-4o analyse ton calendrier Google et propose un quota journalier de divertissement adapté à ta charge de travail. Tu peux négocier en temps réel via un chat.</p>
+          <div class="feature-pill">GPT-4o-mini</div>
+          <div class="feature-pill">Google Calendar</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#3ecf8e22,#3ecf8e44)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><line x1="4" y1="20" x2="20" y2="20"/></svg>
+          </div>
+          <h3>Challenge Pompes</h3>
+          <p>Avant chaque session, l'app exige des pompes. Tu mérites vraiment ce temps libre.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#f0a50022,#f0a50044)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Suivi Firefox</h3>
+          <p>Extension Firefox qui piste automatiquement le temps passé sur YouTube, Netflix, Steam, TikTok et 6 autres sites.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#ff6b6b22,#ff6b6b44)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3>Popups d'interruption</h3>
+          <p>3 niveaux d'intensité (Soft / Standard / Intrusif). Les popups apparaissent quand tu dépasses ton quota et ferment les onglets coupables.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#a78bfa22,#a78bfa44)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Statistiques détaillées</h3>
+          <p>Visualise ta consommation par site, le temps volontaire vs passif et le nombre de popups de la journée.</p>
+        </div>
+
+        <div class="feature-card card-lg">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#3ecf8e22,#3ecf8e44)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+          </div>
+          <h3>Détection gaming</h3>
+          <p>Surveille l'activité GPU pour détecter le gaming en arrière-plan et déclenche une alerte si tu joues sans session déclarée — même sans ouvrir Steam dans le navigateur.</p>
+          <div class="feature-pill">Monitoring GPU</div>
+          <div class="feature-pill">Configurable</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#4a9eff22,#4a9eff44)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Mode pause</h3>
+          <p>Besoin d'une vraie pause ? Désactive les alertes pour 15 min, 30 min, 1h ou 2h d'un clic.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg,#f0a50022,#f0a50044)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="2"><path d="m5 8 6 6 6-6"/></svg>
+          </div>
+          <h3>FR / EN</h3>
+          <p>Interface entièrement bilingue Français / Anglais, persistée entre les sessions. L'IA répond aussi dans ta langue.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ HOW ═══════════════════════ -->
+  <section id="how">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Comment ça marche</span>
+        <h2>Simple, <span class="gradient-text">radical</span></h2>
+        <p>En 3 étapes, transforme ta relation aux écrans.</p>
+      </div>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>L'IA analyse ton planning</h3>
+            <p>FocusGuard connecte ton Google Calendar et envoie tes événements à GPT-4o. L'IA calcule un quota de divertissement raisonnable selon ta charge de travail du jour.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-card">
+              <div class="step-card-row dim">Exam dans 8h · urgence 0.92</div>
+              <div class="step-card-row dim">Réunion dans 2j · urgence 0.45</div>
+              <div class="step-card-highlight">→ Budget conseillé : <strong>45 min</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step step-reverse">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Tu négocies (si besoin)</h3>
+            <p>Pas d'accord avec la proposition ? Ouvre le chat et argumente : "j'ai travaillé 5h", "c'est le week-end"... L'IA est bienveillante et peut accorder 15-30 min supplémentaires.</p>
+          </div>
+          <div class="step-visual">
+            <div class="chat-preview">
+              <div class="chat-bubble ai">Je te propose 45 min aujourd'hui. Tu as un examen demain matin.<br><em class="accord">ACCORD: 45 minutes</em></div>
+              <div class="chat-bubble user">J'ai déjà travaillé 6h, je mérite un peu plus</div>
+              <div class="chat-bubble ai">Tu as raison, bon courage ! <br><em class="accord">ACCORD: 75 minutes</em></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Tu fais tes pompes et tu profites</h3>
+            <p>Pour débloquer chaque session, complète le challenge pompes. Une fois validé, un compte à rebours se lance et tes sites favoris sont surveillés. Ultra-dépassement = popup.</p>
+          </div>
+          <div class="step-visual">
+            <div class="step-card">
+              <div class="pushup-row">
+                <div class="pushup-icon">💪</div>
+                <div>
+                  <div class="pushup-title">Challenge</div>
+                  <div class="pushup-sub">10 pompes pour 35 min de YouTube</div>
+                </div>
+              </div>
+              <div class="progress-mock">
+                <div class="progress-fill" style="width:60%"></div>
+              </div>
+              <div style="font-size:12px;color:#666;text-align:right;margin-top:4px">32:14 restantes</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SITES ═══════════════════════ -->
+  <section id="sites">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Compatibilité</span>
+        <h2>10 sites <span class="gradient-text">surveillés</span></h2>
+      </div>
+      <div class="sites-grid">
+        <div class="site-chip">YouTube</div>
+        <div class="site-chip">Netflix</div>
+        <div class="site-chip">Twitch</div>
+        <div class="site-chip">TikTok</div>
+        <div class="site-chip">Instagram</div>
+        <div class="site-chip">Twitter / X</div>
+        <div class="site-chip">Reddit</div>
+        <div class="site-chip">Steam</div>
+        <div class="site-chip">Facebook</div>
+        <div class="site-chip">9GAG</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ DOWNLOAD ═══════════════════════ -->
+  <section id="download">
+    <div class="container">
+      <div class="download-box">
+        <div class="download-orb"></div>
+        <span class="section-tag">Téléchargement</span>
+        <h2>Prêt à reprendre <span class="gradient-text">le contrôle ?</span></h2>
+        <p>Gratuit, open source, 100 % local. Aucune donnée envoyée sans ton accord.</p>
+
+        <div class="download-cards">
+          <div class="dl-card primary">
+            <div class="dl-platform">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+              Windows
+            </div>
+            <div class="dl-version">v1.0.0 · Python 3.13</div>
+            <a href="#" class="btn-primary dl-btn" id="dl-win" onclick="triggerDownload(event,'windows')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Télécharger .exe
+            </a>
+            <div class="dl-meta">Windows 10 / 11 · 64-bit · ~45 MB</div>
+          </div>
+
+          <div class="dl-card">
+            <div class="dl-platform">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+              iOS
+            </div>
+            <div class="dl-version">Safari · Ajouter à l’écran d’accueil</div>
+            <div class="ios-steps">
+              <div class="ios-step"><span class="ios-step-num">1</span>Ouvre ce site dans <strong>Safari</strong></div>
+              <div class="ios-step"><span class="ios-step-num">2</span>Appuie sur <strong>⊞ Partager</strong></div>
+              <div class="ios-step"><span class="ios-step-num">3</span>Choisis <strong>« Sur l’écran d’accueil »</strong></div>
+            </div>
+            <div class="dl-meta">iOS 15+ · Fonctionne hors ligne</div>
+          </div>
+
+          <div class="dl-card">
+            <div class="dl-platform">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Source
+            </div>
+            <div class="dl-version">GitHub · Branch main</div>
+            <a href="https://github.com/" class="btn-ghost dl-btn" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              Voir sur GitHub
+            </a>
+            <div class="dl-meta">Cloner et lancer avec pip</div>
+          </div>
+        </div>
+
+        <div class="install-block">
+          <div class="install-title">Installation manuelle (source)</div>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)" title="Copier">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+            <pre><code><span class="c"># 1. Cloner le projet</span>
+git clone https://github.com/votre-user/focusguard.git
+cd focusguard
+
+<span class="c"># 2. Créer l'environnement virtuel</span>
+python -m venv .venv
+.venv\Scripts\activate
+
+<span class="c"># 3. Installer les dépendances</span>
+pip install -r requirements.txt
+
+<span class="c"># 4. Lancer</span>
+python -m app.settings.dashboard_ui</code></pre>
+          </div>
+        </div>
+
+        <div class="requirements">
+          <div class="req-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Python 3.10+
+          </div>
+          <div class="req-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Firefox + extension incluse
+          </div>
+          <div class="req-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Clé OpenAI (optionnelle)
+          </div>
+          <div class="req-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Google Calendar (optionnel)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">FocusGuard</span>
+        <p>Conçu pour ceux qui veulent reprendre<br />le contrôle de leur temps.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#features">Fonctionnalités</a>
+        <a href="#how">Comment ça marche</a>
+        <a href="#download">Télécharger</a>
+        <a href="https://github.com/" target="_blank">GitHub</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 FocusGuard · Open Source · MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Download toast -->
+  <div id="toast" class="toast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    Téléchargement démarré !
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
